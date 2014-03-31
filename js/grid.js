@@ -87,7 +87,9 @@ Grid.prototype.cellContent = function (cell) {
 
 // Inserts a tile at its position
 Grid.prototype.insertTile = function (tile) {
+	alert(1);
   this.cells[tile.x][tile.y] = tile;
+  alert(1);
 };
 
 Grid.prototype.removeTile = function (tile) {
