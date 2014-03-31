@@ -62,7 +62,8 @@ HTMLActuator.prototype.addTile = function (tile) {
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
-  inner.textContent = tile.value+"haha";
+  //表格中的数字，原程序为tile.value
+  inner.textContent = " ";
 
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
