@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script
+ src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js">
+ </script>
+	<script type="text/coffeescript" src="http://localhost/translate.coffee"></script>
+	<script type="text/coffeescript" src="http://localhost/help.coffee"></script>
+	<script type="text/coffeescript">
+		module.exports = (robot) ->
+    # waits for the string "hubot deep" to occur
+    robot.respond /deep/i, (msg) ->
+        # Configures the url of a remote server
+        msg.http('http://andymatthews.net/code/deepthoughts/get.cfm')
+            # and makes an http get call
+            .get() (error, response, body) ->
+                # passes back the complete reponse
+                msg.send body
+        $("#execute").click -> 
+            a = $("#command").val()
+			alert a
+            $("#c").html module.exports(a)
+    </script>
+	<script type="text/coffeescript">
+        gcd = (a,b) -> if (b==0) then a else gcd(b, a % b)
+        $("#button").click -> 
+            a = $("#a").val() 
+            b = $("#b").val() 
+            $("#c").html gcd(a,b)
+    </script>
+  </head>
+  <body>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<div class="row-fluid">
+	  <div class="span12">
+		<div class="page-header">
+		  <h1>
+			<p class="text-center">
+				IceBot  
+				<small>What can I do for you</small>
+			</p>
+		  </h1>
+		</div>
+		<div class="row-fluid">
+		  <div class="span4">
+			<img src="img/walle.jpg" class="img-rounded">
+		  </div>
+		  <div class="span4">
+		   <form class="form-search">
+			  <input type="text" class="input-medium search-query" id="command">
+			  <button type="submit" class="btn" id="execute">Execute</button>
+			</form>
+		  </div>
+		  <div class="span4">
+		   <span id="c"/> A: <input type="text" id="a"/><br/>
+    B: <input type="text" id="b"/><br/>
+    <input type="button" value="Calculate GCD" id="button"/> <br/>
+    C: <span id="c"/>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </body>
+</html>
