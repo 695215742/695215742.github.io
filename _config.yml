@@ -14,6 +14,8 @@ destination: ./_site
 permalink: /:title
 paginate: 8
 paginate_path: /page:num/
+paginate_path: blog/page:num/
+paginate_path: project/page:num/
 
 # Default values
 defaults:
