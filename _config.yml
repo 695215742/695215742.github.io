@@ -1,11 +1,28 @@
-auto: true
+# Site settings
+title: Emerald | A simple Jekyll blog
+description: "A minimal blog template, build with Jekyll."
+url: "http://www.jacoporabolini.com/emerald"
+author:
+  name: "Jacopo Rabolini"
+  url: "http://www.jacoporabolini.com"
 
-markdown: rdiscount
-pygments: true
-paginate: 8
+# Build settings
+baseurl: /emerald/ # Change this to your relative path (ex: /blog/), or leave just a /
+markdown: kramdown
+source: .
+destination: ./_site
 permalink: /:title
+paginate: 8
+paginate_path: /page:num/
 
-title: WinterHouse.com
-url: http://695215742.github.io/
-feed: /atom.xml
-author_info: <a href="http://695215742.github.io/">WinterHouse</a>
+# Default values
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Custom variables
+version: "1.0.1"
