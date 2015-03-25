@@ -7,7 +7,7 @@ author:
   url: "http://695215742.github.io/"
 
 # Build settings
-baseurl: /
+baseurl: http://695215742.github.io/
 markdown: kramdown
 source: .
 destination: ./_site
