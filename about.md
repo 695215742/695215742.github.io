@@ -2,4 +2,5 @@
 layout: default
 title: About WinterHouse
 ---
-## About
+## About me
+
