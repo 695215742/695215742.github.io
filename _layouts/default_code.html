@@ -78,13 +78,25 @@ title: WinterHouse
 				(document.getElementsByTagName('head')[0] 
 				 || document.getElementsByTagName('body')[0]).appendChild(ds);
 			})();
-		$(function() {
-			$('pre').addClass('prettyprint').attr('style:Desert', 'overflow:auto');
-			window.prettyPrint && prettyPrint();
-			});
 	</script>
-	<script src="../js/prettify/prettify.js"></script>
-	<link href="../js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="../js/highlighter/shCore.js"></script>
+	 
+	<!--
+		At least one brush, here we choose JS. You need to include a brush for every 
+		language you want to highlight
+	-->
+	<script type="text/javascript" src="../js/highlighter/shBrushCpp.js"></script>
+	 
+	<!-- Include *at least* the core style and default theme -->
+	<link href="../css/highlighter/shCore.css" rel="stylesheet" type="text/css" />
+	<link href="../css/highlighter/shThemeMidnight.css" rel="stylesheet" type="text/css" />
+	 
+	<!-- You also need to add some content to highlight, but that is covered elsewhere. -->
+	 
+	<!-- Finally, to actually run the highlighter, you need to include this JS on your page -->
+	<script type="text/javascript">
+		 SyntaxHighlighter.all()
+	</script>
 	<!-- 多说公共JS代码 end -->
 </body>
 </html>
