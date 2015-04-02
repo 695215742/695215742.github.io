@@ -2,7 +2,7 @@
 layout: post
 title: 阿里巴巴研发C++笔试
 description: 
-category: blog
+category: blogs
 tag:lol
 ---
 
