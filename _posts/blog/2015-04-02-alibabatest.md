@@ -43,7 +43,4 @@ category: blogs
 ---
 
 
-[winterhouse]:    http://695215742.github.io/  "WinterHouse"
-[1]:    {{ page.url}}  ({{ page.title }})
-
 
