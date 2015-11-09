@@ -21,17 +21,23 @@ category: blog
 
 另一种物联网：我之前对物联网的概念局限在智能家居这种个人场景的应用上，没有想到做这种为企业来提供解决方案的物联网应用，实习期间也对这种物联网的应用场景，设计，架构什么的学习了很多。感觉这一类物联网项目，差不多就是底层有大量的设备，设备通过各种形式各种协议进行通信，顶层是用来进行管理的系统，管理系统和底层设备之间会有其他几层用来处理并发，调度给设备安排任务，缓存，负载均衡，底层偏上还会有协议的适配等等。
 
-pyunit框架：用来做python测试。
+STtester：用来做python测试。修改了一个项目组内的multi thread pyunit 测试框架。
 [pyunit website](https://wiki.python.org/moin/PyUnit)
 
-PL\SQL脚本: 一种ORACLE提供的可执行程序语言，可以用来写一些ORACLE的测试脚本之类的，之前用这个做了一些大数据的数据库性能测试。
+OracleDBtester: pl/sql是一种ORACLE提供的可执行程序语言，可以用来写一些ORACLE的测试脚本之类的。
+用pl/sql封装了一些操作（很少）用来做组内的数据库测试。这个东西写起来也是困难。
 [pl/sql examples](http://docs.oracle.com/cd/A97630_01/appdev.920/a96624/a_samps.htm)
 
 Python queue urlib2 : 由于项目里面有restful接口（虽然不是严格意义上的restful接口），于是就用django+queue+urlli2写了一个简单的用来测试restful接口的页面。
-想法就是可以多线程或者定时地来发送restful请求，定义了一些宏来发送可定制的json数据。后来也确实实现了，但是数据量大之后就开始出现了很多问题，都是自己之前从来没有考虑过的
+想法就是可以多线程或者定时地来发送restful请求，定义了一些宏来发送可定制的json数据。
+但是数据量大之后就开始出现了很多问题，都是自己之前从来没有考虑过的。比如说线程多了以后的端口占用问题还有项目组本身要测试的服务器的负载问题等等。
 之后在另一个小项目里也感受到了python的速度和C++速度的差别，确实是慢很多。
 [ajax form subission](https://realpython.com/blog/python/django-and-ajax-form-submissions/)
 [python http request](http://stackoverflow.com/questions/2632520/what-is-the-fastest-way-to-send-100-000-http-requests-in-python)
 [python threading](https://docs.python.org/2/library/threading.html)
 
-redis：用来做缓存，
+knowlegeable ： 一个桌面化的小工具，使用qt(C++)实现，向公司内部web接口发送数据并且获取回复的工具，本质上就是一个爬虫的功能，模拟登录，获取cookie，然后发送请求解析回复，所以最开始是用python写的，然后用C++调python的接口来实现，后来发现速度实在是太慢了，web上1秒内的请求要过2,3秒才能收到回复，于是就用QT的networkmanager来做了，QT封装的真的很好，基本上就没有遇到过什么问题。只能说太方便了。
+
+configure tools ：一个修改项目配置文件的工具 C++, boost, 其实很简单，唯一的难题就是加解密和远程修改配置时候的问题。
+
+redispool：redis，用来做分布式缓存，目前准备用hiredis和boost来封装一个redis的连接池。
