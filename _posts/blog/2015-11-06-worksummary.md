@@ -37,7 +37,13 @@ Python queue urlib2 : 由于项目里面有restful接口（虽然不是严格意
 [python threading](https://docs.python.org/2/library/threading.html)
 
 knowlegeable ： 一个桌面化的小工具，使用qt(C++)实现，向公司内部web接口发送数据并且获取回复的工具，本质上就是一个爬虫的功能，模拟登录，获取cookie，然后发送请求解析回复，所以最开始是用python写的，然后用C++调python的接口来实现，后来发现速度实在是太慢了，web上1秒内的请求要过2,3秒才能收到回复，于是就用QT的networkmanager来做了，QT封装的真的很好，基本上就没有遇到过什么问题。只能说太方便了。
+[qt cookies](http://stackoverflow.com/questions/4509441/qt-http-post-issue-when-server-requires-cookies)
+[qt http](http://stackoverflow.com/questions/12487620/correct-format-for-http-post-using-qnetworkrequest)
 
-configure tools ：一个修改项目配置文件的工具 C++, boost, 其实很简单，唯一的难题就是加解密和远程修改配置时候的问题。
+configure tools ：一个修改项目配置文件的工具 C++, boost, 其实很简单，唯一的难题就是加解密和远程修改配置时候的问题。不，还有一个难题就是boost的ptree还是很难用的。
+[boost ptree](http://www.boost.org/doc/libs/1_58_0/doc/html/property_tree.html)
 
 redispool：redis，用来做分布式缓存，目前准备用hiredis和boost来封装一个redis的连接池。
+
+然后就是调试了好多电表和硬件网关，然而对业务还是并不熟悉。
+
