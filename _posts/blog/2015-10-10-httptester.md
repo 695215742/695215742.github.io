@@ -104,7 +104,7 @@ class httpmanager:
     httpport = 8081
     httpmethod = "POST"
     httpbody = ""
-    httppath = r"/dcp/v200r005c90"
+    httppath = r""
     taskqueue = Queue(10)
     threadcount = 1
     taskresult = dict()
