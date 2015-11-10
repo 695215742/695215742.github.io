@@ -6,7 +6,9 @@ category: blogs
 ---
 
 ####定时发送http请求
-<pre class="brush: python">
+
+<pre class="brush: py">
+
 import sched, time
 import httplib,sys
 #from tester.models import Tasks
@@ -74,8 +76,11 @@ class planrequest:
                 reqip = ""
         return reqip
 </pre>
+
 ####并发http请求
-<pre class="brush: python">
+
+<pre class="brush: py">
+
 import httplib,sys
 from Queue import Queue
 from threading import Thread
@@ -161,5 +166,4 @@ class httpmanager:
             t.start()
         self.taskqueue.join()
         
-                   
 </pre>
