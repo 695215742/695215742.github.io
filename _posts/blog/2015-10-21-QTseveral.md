@@ -60,7 +60,10 @@ private:
     a.setValue(12);     // a.value() == 12, b.value() == 12
     b.setValue(48);     // a.value() == 12, b.value() == 48
 
+
 </pre>
+
+
 
 在QTCreator中使用signal和slot是非常方便的，基本上没有什么技术含量。但是实现原理也是非常复杂，我也是没有看懂。。
 [concept](http://woboq.com/blog/how-qt-signals-slots-work.html)
