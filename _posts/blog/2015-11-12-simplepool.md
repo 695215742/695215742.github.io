@@ -10,7 +10,7 @@ category: blog
 
 项目里需要用到redis，同时也要有redis的连接池之类的东西，在github上找到了一个连接池(https://github.com/luca3m/redis3m),就是普通的连接池设计思想。
 
-Pool里用一个set成员变量保存所有的连接，当调用getconnection成员方法的时候就在连接池里查找，如果有可用的连接，就获取返回该连接，并且从set中去掉该连接，当client使用完毕以后，再用put成员方法将connection put回连接池里，我觉得唯一需要修改的就是连接池没有最大连接数的限制。
+Pool里用一个set成员变量保存所有的连接，当调用getconnection成员方法的时候就在连接池里查找，如果有可用的连接，就获取返回该连接，并且从set中去掉该连接，当client使用完毕以后，再用put成员方法将connection put回连接池里，我觉得唯一需要修改的就是连接池没有最大连接数的限制。我已经pull request了,这也是我人生中第一个被不认识的人接受的request。。。
 
 但是在看组里数据库的连接池的代码时，却发现组里的连接池并不是正常的连接池做法。
 
