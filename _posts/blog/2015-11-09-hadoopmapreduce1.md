@@ -30,7 +30,7 @@ map的输出：将原始文件处理后输出的键值对
 #the above just indicates to use python to intepret this file
 
 # ---------------------------------------------------------------
-#This mapper code will input a line of text and output <word, 1>
+#This mapper code will input a line of text and output &lt;word, 1>
 # 
 # ---------------------------------------------------------------
 
@@ -67,7 +67,7 @@ reduce: (k1; [v1]) → [(k2; v2)]
 
 输出：最终输出结果[(k3; v3)]
 
-在统计单词次数这个例子中，reduce的输出是<word,count>
+在统计单词次数这个例子中，reduce的输出是&lt;word,count>
 
 
 <pre class="brush: python">
@@ -77,7 +77,7 @@ reduce: (k1; [v1]) → [(k2; v2)]
 
 # ---------------------------------------------------------------
 #This reducer code will input a line of text and 
-#    output <word, total-count>
+#    output &lt;word, total-count>
 # ---------------------------------------------------------------
 import sys
 
@@ -110,7 +110,7 @@ for input_line in sys.stdin:
                                  #   is different, and the previous 
                                  #   (ie last) key is not empy,
                                  #   then output 
-                                 #   the previous <key running-count>
+                                 #   the previous &lt;key running-count>
             print( "{0}\t{1}".format(last_key, running_total) )
                                  # hadoop expects tab(ie '\t') 
                                  #    separation
