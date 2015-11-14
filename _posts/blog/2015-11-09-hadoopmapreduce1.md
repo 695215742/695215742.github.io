@@ -57,6 +57,7 @@ for line in sys.stdin:
         print('{0}\t{1}'.format(key, value) ) #the {} is replaced by 0th,1st items in format list
                             #also, note that the Hadoop default is 'tab' separates key from the value
 
+
 </pre>
 
 reduce: (k1; [v1]) → [(k2; v2)]
@@ -67,6 +68,7 @@ reduce: (k1; [v1]) → [(k2; v2)]
 输出：最终输出结果[(k3; v3)]
 
 在统计单词次数这个例子中，reduce的输出是<word,count>
+
 
 <pre class="brush: python">
 
