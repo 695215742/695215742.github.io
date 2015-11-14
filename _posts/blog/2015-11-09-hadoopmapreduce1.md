@@ -1,7 +1,7 @@
 ---
 layout: post_code
 title: Mapreduce part 1
-category: problem
+category: blog
 description: 
 ---
 
@@ -24,7 +24,7 @@ map的输出：将原始文件处理后输出的键值对
 
 在统计单词出现次数这个例子中，map的输入是文本，输出是<word,1>
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 #!/usr/bin/env python   
 #the above just indicates to use python to intepret this file
@@ -68,7 +68,7 @@ reduce: (k1; [v1]) → [(k2; v2)]
 
 在统计单词次数这个例子中，reduce的输出是<word,count>
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 
 #!/usr/bin/env python
@@ -124,7 +124,7 @@ if last_key == this_key:
 
 #####reducetasks 为 0时的输出
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 -rw-r--r--   1 cloudera supergroup          0 2015-11-14 01:57 /user/cloudera/output_word_0/_SUCCESS
 -rw-r--r--   1 cloudera supergroup         61 2015-11-14 01:57 /user/cloudera/output_word_0/part-00000
@@ -132,7 +132,7 @@ if last_key == this_key:
 
 </pre>
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 A	1
 long	1
@@ -147,7 +147,7 @@ away	1
 
 </pre>
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 Another	1
 episode	1
@@ -159,14 +159,14 @@ Wars	1
 
 #####reducetasks 为 1时的输出
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 -rw-r--r--   1 cloudera supergroup          0 2015-11-14 02:05 /user/cloudera/output_word_1/_SUCCESS
 -rw-r--r--   1 cloudera supergroup         94 2015-11-14 02:05 /user/cloudera/output_word_1/part-00000
 
 </pre>
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 A	1
 Another	1
@@ -187,7 +187,7 @@ time	1
 
 #####reducetasks 为 2时的输出
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 -rw-r--r--   1 cloudera supergroup          0 2015-11-14 02:14 /user/cloudera/output_word_2/_SUCCESS
 -rw-r--r--   1 cloudera supergroup         64 2015-11-14 02:14 /user/cloudera/output_word_2/part-00000
@@ -195,7 +195,7 @@ time	1
 
 </pre>
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 A	1
 Another	1
@@ -210,7 +210,7 @@ time	1
 
 </pre>
 
-<pre class="brush: Python">
+<pre class="brush: python">
 
 Star	1
 away	1
