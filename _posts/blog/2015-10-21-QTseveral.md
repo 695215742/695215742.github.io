@@ -27,7 +27,7 @@ QT的slot和signal类似于callback，当对象状态发生改变时，可以释
 
 <pre class="brush: cpp">
 
-#include <QObject>
+#include &lt;QObject>
 
 class Counter : public QObject
 {
