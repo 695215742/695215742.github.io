@@ -6,7 +6,7 @@ category: blog
 ---
 
 
-redissentinel简介
+####redissentinel简介
 
 redis sentinel是一种特殊的redis服务器，但仍然是一种redis服务器，在启动过程中，会将运行代码从redis代码替换为sentinel代码。
 
@@ -153,7 +153,7 @@ int sentinelSendSlaveOf(sentinelRedisInstance *ri, char *host, int port) {
     if (retval == REDIS_ERR) return retval;
     ri->pending_commands++;
 
-    /* CLIENT KILL TYPE <type> is only supported starting from Redis 2.8.12,
+    /* CLIENT KILL TYPE &lt;type> is only supported starting from Redis 2.8.12,
      * however sending it to an instance not understanding this command is not
      * an issue because CLIENT is variadic command, so Redis will not
      * recognized as a syntax error, and the transaction will not fail (but
