@@ -33,3 +33,19 @@ sentinel known-slave mymaster 10.171.91.230 6379
 21012:X 03 Dec 10:23:17.008 # +switch-master mymaster 10.171.91.230 6379 10.171.144.224 6379
 21012:X 03 Dec 10:23:17.008 * +slave slave 10.171.91.230:6379 10.171.91.230 6379 @ mymaster 10.171.144.224 6379
 21012:X 03 Dec 10:23:47.066 # +sdown slave 10.171.91.230:6379 10.171.91.230 6379 @ mymaster 10.171.144.224 6379
+
+28944:X 03 Dec 10:23:21.274 # +new-epoch 6634
+28944:X 03 Dec 10:23:21.274 # +try-failover master mymaster 10.171.91.230 6379
+28944:X 03 Dec 10:23:21.278 # +vote-for-leader ae03e9c7965d0182d42ba9472c7c238f99caf40a 6634
+28944:X 03 Dec 10:23:21.294 # 10.171.144.224:26379 voted for ae03e9c7965d0182d42ba9472c7c238f99caf40a 6634
+28944:X 03 Dec 10:23:21.345 # +elected-leader master mymaster 10.171.91.230 6379
+28944:X 03 Dec 10:23:21.345 # +failover-state-select-slave master mymaster 10.171.91.230 6379
+28944:X 03 Dec 10:23:21.404 # +selected-slave slave 10.171.144.224:6379 10.171.144.224 6379 @ mymaster 10.171.91.230 6379
+28944:X 03 Dec 10:23:21.404 * +failover-state-send-slaveof-noone slave 10.171.144.224:6379 10.171.144.224 6379 @ mymaster 10.171.91.230 6379
+28944:X 03 Dec 10:23:21.495 * +failover-state-wait-promotion slave 10.171.144.224:6379 10.171.144.224 6379 @ mymaster 10.171.91.230 6379
+28944:X 03 Dec 10:23:22.322 # +promoted-slave slave 10.171.144.224:6379 10.171.144.224 6379 @ mymaster 10.171.91.230 6379
+28944:X 03 Dec 10:23:22.322 # +failover-state-reconf-slaves master mymaster 10.171.91.230 6379
+28944:X 03 Dec 10:23:22.403 # +failover-end master mymaster 10.171.91.230 6379
+28944:X 03 Dec 10:23:22.403 # +switch-master mymaster 10.171.91.230 6379 10.171.144.224 6379
+28944:X 03 Dec 10:23:22.403 * +slave slave 10.171.91.230:6379 10.171.91.230 6379 @ mymaster 10.171.144.224 6379
+28944:X 03 Dec 10:23:52.422 # +sdown slave 10.171.91.230:6379 10.171.91.230 6379 @ mymaster 10.171.144.224 6379
