@@ -175,3 +175,17 @@ int sentinelSendSlaveOf(sentinelRedisInstance *ri, char *host, int port) {
 
 ri是一个sentinelRedisInstance *，也就是当前要操作的sentinel实例，host就是要设置的masterip，port就是当前要设置的masterport，如果host为空，那么就设置为master，因此我们只需要在里面加上一个判断，如果ri中的slave_master_host与host相同，就不进行设置，就可以避免这个问题了。
 
+sentinelEvent(REDIS_WARNING,"ri is %s",ri,"%@%s",ri->addr->ip);
+				//&& ri->master->addr->port == ri->addr->port
+				sentinelEvent(REDIS_WARNING,"master is%s",ri->master,"%@%s", ri->master->addr->ip);
+				if( strcmp(ri->master->addr->ip,ri->addr->ip) == 0 && ri->master->addr->port == ri->addr->port)
+				{
+					sentinelEvent(REDIS_NOTICE,"slave is alredy master",ri,"%@");
+					ri->master->config_epoch = ri->master->failover_epoch;
+					ri->master->failover_state = SENTINEL_FAILOVER_STATE_RECONF_SLAVES;
+					ri->master->failover_state_change_time = mstime();
+					sentinelFlushConfig();
+					sentinelEvent(REDIS_WARNING,"+promoted-slave",ri,"%@");
+					sentinelResetMaster(ri->master,SENTINEL_RESET_NO_SENTINELS);
+					//sentinelForceHelloUpdateForMaster(ri->master);
+				}
