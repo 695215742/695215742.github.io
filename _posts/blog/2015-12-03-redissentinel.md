@@ -175,7 +175,46 @@ int sentinelSendSlaveOf(sentinelRedisInstance *ri, char *host, int port) {
 
 ri是一个sentinelRedisInstance *，也就是当前要操作的sentinel实例，host就是要设置的masterip，port就是当前要设置的masterport，如果host为空，那么就设置为master，因此我们只需要在里面加上一个判断，如果ri中的slave_master_host与host相同，就不进行设置，就可以避免这个问题了。
 
-sentinelEvent(REDIS_WARNING,"ri is %s",ri,"%@%s",ri->addr->ip);
+然而这样改是并不能行的，因为sentinelSendSlaveOf这个函数不仅用于设置slave的master，也用来将slave提升为master，如果传入的masterip为空，则将当前的ri设置为master
+
+所以需要在sentinelRefreshInstanceInfo这个函数中，找到如下这段内容，这个函数是用来周期性更新redis信息的，而这一段是用来处理一个本来应该是slave的redis现在是master的情况。
+
+<pre class="brush: cpp">
+
+ /* A slave turned into a master. We want to force our view and
+             * reconfigure as slave. Wait some time after the change before
+             * going forward, to receive new configs if any. */
+            mstime_t wait_time = SENTINEL_PUBLISH_PERIOD*4;
+
+            if (!(ri->flags & SRI_PROMOTED) &&
+                 sentinelMasterLooksSane(ri->master) &&
+                 sentinelRedisInstanceNoDownFor(ri,wait_time) &&
+                 mstime() - ri->role_reported_time > wait_time)
+            {
+                int retval = sentinelSendSlaveOf(ri,
+                        ri->master->addr->ip,
+                        ri->master->addr->port);
+                if (retval == REDIS_OK)
+                    sentinelEvent(REDIS_NOTICE,"+convert-to-slave",ri,"%@");
+            }
+
+</pre>
+
+需要做个判读，其实应该用 SRI_PROMOTED这个状态来修改。
+
+<pre class="brush: cpp">
+
+/* A slave turned into a master. We want to force our view and
+             * reconfigure as slave. Wait some time after the change before
+             * going forward, to receive new configs if any. */
+            mstime_t wait_time = SENTINEL_PUBLISH_PERIOD*4;
+
+            if (!(ri->flags & SRI_PROMOTED) &&
+                 sentinelMasterLooksSane(ri->master) &&
+                 sentinelRedisInstanceNoDownFor(ri,wait_time) &&
+                 mstime() - ri->role_reported_time > wait_time)
+            {
+				sentinelEvent(REDIS_WARNING,"ri is %s",ri,"%@%s",ri->addr->ip);
 				//&& ri->master->addr->port == ri->addr->port
 				sentinelEvent(REDIS_WARNING,"master is%s",ri->master,"%@%s", ri->master->addr->ip);
 				if( strcmp(ri->master->addr->ip,ri->addr->ip) == 0 && ri->master->addr->port == ri->addr->port)
@@ -189,3 +228,13 @@ sentinelEvent(REDIS_WARNING,"ri is %s",ri,"%@%s",ri->addr->ip);
 					sentinelResetMaster(ri->master,SENTINEL_RESET_NO_SENTINELS);
 					//sentinelForceHelloUpdateForMaster(ri->master);
 				}
+				else
+				{
+					int retval = sentinelSendSlaveOf(ri,
+                        ri->master->addr->ip,
+                        ri->master->addr->port);
+					if (retval == REDIS_OK)
+						sentinelEvent(REDIS_NOTICE,"+convert-to-slave",ri,"%@");
+				}
+            }
+</pre>
