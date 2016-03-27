@@ -2,7 +2,7 @@
 layout: post
 title: 工作总结
 description: 
-category: blog
+category: blogs
 ---
 
 实习已经过去四个月了，也是时候反思一下自己在实习过程里的收获了。
