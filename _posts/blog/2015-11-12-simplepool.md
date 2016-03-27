@@ -2,7 +2,7 @@
 layout: post
 title: 一个奇怪的连接池
 description: 
-category: blog
+category: blogs
 ---
 
 [object pool](https://sourcemaking.com/design_patterns/object_pool)
