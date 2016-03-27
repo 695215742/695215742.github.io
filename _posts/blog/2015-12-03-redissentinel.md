@@ -2,7 +2,7 @@
 layout: post
 title: redis sentinel介绍及一个小bug
 description: 
-category: blog
+category: blogs
 ---
 
 
