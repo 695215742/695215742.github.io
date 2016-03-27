@@ -1,7 +1,7 @@
 ---
 layout: post_code
 title: Mapreduce Part2
-category: blog
+category: blogs
 description: 
 ---
 
