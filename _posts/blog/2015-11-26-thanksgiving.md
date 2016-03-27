@@ -2,7 +2,7 @@
 layout: post
 title: 感恩节
 description: 
-category: blog
+category: blogs
 ---
 
 其实刚开始实习的时候我是拒绝的，虽然现在也是早晨9点到晚上6点走很少加班，但是心态和实习刚开始的时候已经很不一样了。
